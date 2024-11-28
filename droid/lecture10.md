@@ -30,7 +30,7 @@
 - When a coroutine calls a suspending function, the coroutine is suspended
 - Once suspended its state gets saved and the regular flow of operations continue (aka. non-blocking)
 - When the suspended operation completes (e.g. an http request), its state is restore back with the regular flow of operations
-  ![alt text](image-28.png)
+  ![alt text](./img/image-28.png)
 - Call suspend functions only from other suspend functions or directly within coroutine
 - To create a coroutine we use a coroutine builder
   - runBlocking
@@ -81,7 +81,7 @@
 
   - It can only be called with a _CoroutineScope_
   - it inherits runBlocking's _CoroutineScope_  
-     ![alt text](image-29.png)
+     ![alt text](./img/image-29.png)
 
 - We could also move all of this in to a suspend function and provide our own _CoroutineScope_ suing the **coroutineScope**
 
@@ -154,11 +154,11 @@
 
 What will be printed?
 
-1.  ![alt text](image-30.png)
+1.  ![alt text](./img/image-30.png)
     > 1. 87451155
-2.  ![alt text](image-31.png)
+2.  ![alt text](./img/image-31.png)
     > 2. 87451155
-3.  ![alt text](image-32.png)
+3.  ![alt text](./img/image-32.png)
     > 3. 55114587
 
 ## HTTP Request
@@ -192,7 +192,7 @@ What will be printed?
   - making HTTP requests
   - JSON Serialization and deserialization
 - Need a few dependencies
-  ![alt text](image-33.png)
+  ![alt text](./img/image-33.png)
 - Ktor's _HttpClient_ is built using Coroutines
   ```kotlin
   private val clinet = HttpClient{}
@@ -238,8 +238,8 @@ What will be printed?
   data class ArtPeice(
       val id: String,
       val title: String,
-      @SerializedName("image_id")
-      val image: String?
+      @SerializedName("./img/image_id")
+      val ./img/image: String?
   )
   ```
 
@@ -318,9 +318,9 @@ What will be printed?
   }
   ```
 
-- if API provides images, need to obtain the correct URL
+- if API provides ./img/images, need to obtain the correct URL
   ```kotlin
-  IMAGE_ENDPOINT("http://www.google.com/image.jpg")
+  ./img/image_ENDPOINT("http://www.google.com/./img/image.jpg")
   fun format(str: String?): String {
     if (str == null) return ""
     return url.format(str)
@@ -329,6 +329,6 @@ What will be printed?
 
 ### Coil
 
-- Coil is an image loader libarary for jetpack compose
-  ![alt text](image-34.png)
-  ![alt text](image-35.png)
+- Coil is an ./img/image loader libarary for jetpack compose
+  ![alt text](./img/image-34.png)
+  ![alt text](./img/image-35.png)

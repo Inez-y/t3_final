@@ -17,16 +17,24 @@
 
 - **Stream-oriented protocol** (byte-oriented)
   - the sending process delivers data as a **stream of bytes** and the receiving process obtains data as a stream of bytes
-    ![alt text](image-56.png)
+    ![alt text](./img/image-56.png)
 
 ## TCP - Sending and Receiving Buffers
 
 - Buffers are necessary for _flow control_ and _error control_
-  ![alt text](image-57.png)
+  ![alt text](./img/image-57.png)
 
 ## TCP - Numbering System
 
+- TCP numbers all data byts (octets) that are transmitted in a connection
+- Number is **independent** in each direction
+- Byte numbering is used for **flow and error control**
+- Two filed in the segment header -_sequence number_ -_acknowledgement number_
+  - each of above fields refer to a **byte number** and not a segment nubmer
+
 ## TCP Segment - Format
+
+![alt text](./img/image-58.png)
 
 ## TCP - Connection
 

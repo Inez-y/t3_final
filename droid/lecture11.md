@@ -68,7 +68,7 @@
 
   - ComponentActivity(default)
   - NavBackStackEntry (useful for navigation)
-    ![alt text](image-36.png)
+    ![alt text](./img/image-36.png)
 
 - To create one, we use the _viewModel_ function
 

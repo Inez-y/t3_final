@@ -41,7 +41,7 @@
 
 - An interent can be modeled a _weighted graph_ to find the best rotue
 
-![alt text](image-28.png)
+![alt text](./img/image-28.png)
 
 ### Least-Cost Routing
 
@@ -55,7 +55,7 @@
 
 #### Least-Cost Trees
 
-![alt text](image-29.png)
+![alt text](./img/image-29.png)
 
 ## Routing Algorithms
 
@@ -71,14 +71,14 @@
 - A distance vector doesn't give the path to the destinations
   - it gives **only the elast costs to the destinations**
   - distance vector can be changed to a _forwarding table_
-    ![alt text](image-30.png)
+    ![alt text](./img/image-30.png)
 
 #### First Distance Vectors for the Nodes
 
 - The algorithm is run by each node **independently** and **asynchronously**
 - Each node in an internet, when it is **booted**
   - creates a very rudimentary distance vector with the minimum informatino the node can obtain from tis neighborhood
-    ![alt text](image-31.png)
+    ![alt text](./img/image-31.png)
 
 ##### Updating Distance Vectors
 
@@ -100,11 +100,11 @@
 
 ###### Graphical Idea Behind the Bellman-Ford Equation
 
-![alt text](image-32.png)
+![alt text](./img/image-32.png)
 
 ###### Updating Distance Vectors
 
-![alt text](image-33.png)
+![alt text](./img/image-33.png)
 
 ### Link-State Routing ALgorithm
 
@@ -121,7 +121,7 @@
 - The network topology and all link costs are known
   - they are available as **input to the LS algorithm**
 - **Link-State Database** (LSDB): the collectin of states for all links
-  ![alt text](image-34.png)
+  ![alt text](./img/image-34.png)
 - There is _only one LSBD_ for the whole interent
   - each node needs to have a **duplicate**of it to be abel to create the least-cost tree
 - The LSDB can be represented as a **two-dimension array** (matrix)
@@ -138,7 +138,7 @@
 
 ##### Building LSDB using LSPs
 
-![alt text](image-35.png)
+![alt text](./img/image-35.png)
 
 ##### Formation of Least-Cost Trees
 
@@ -152,7 +152,7 @@
 
 ###### Running Dijkstra Algorithm at nodt A
 
-![alt text](image-36.png)
+![alt text](./img/image-36.png)
 
 1. B is added to the tree. C and E are
    its neighbors and not in the tree.
@@ -194,7 +194,7 @@
 
 - **Interent Service provider** (ISP) provides services but at different levels
   - backbone, provider network, customer network
-    ![alt text](image-37.png)
+    ![alt text](./img/image-37.png)
 
 ## Routing on the Internet
 
@@ -224,7 +224,7 @@
   - Exterior Gateway Protocol(**EGP**) = inter-as routing protocol
     - the global routing protocol
       - Border Gateway Protocol(**BGP**)
-        ![alt text](image-38.png)
+        ![alt text](./img/image-38.png)
 
 # Routing Information Protocol (RIP)
 
@@ -236,14 +236,14 @@
 
 ## Hop Counts in RIP
 
-![alt text](image-39.png)
+![alt text](./img/image-39.png)
 
 - The maximum cost of path can be **15**, which means **16** is considered as infinity (no connnection)
 - RIP can be used only in ASs in which the diameter of the AS is not more than 15 hops
 
 ### Rip and Forwarding Tables
 
-![alt text](image-40.png)
+![alt text](./img/image-40.png)
 The third column is not needed for forwarding the packet, but it is needed for updating
 the forwarding table when there is a change in the route
 Although a forwarding table in RIP defines only the next router in the second column,
@@ -253,10 +253,10 @@ defines that there is no next router for this path. The tree is then R1 â†’ R2 â
 
 #### Example of an Autonomous System Using RIP
 
-![alt text](image-41.png)
-![alt text](image-42.png)
-![alt text](image-43.png)
-![alt text](image-44.png)
+![alt text](./img/image-41.png)
+![alt text](./img/image-42.png)
+![alt text](./img/image-43.png)
+![alt text](./img/image-44.png)
 
 # Open Shortest Path First (OSPF)
 
@@ -273,7 +273,7 @@ defines that there is no next router for this path. The tree is then R1 â†’ R2 â
 
 ## OSPF - Forwarding Tables
 
-![alt text](image-45.png)
+![alt text](./img/image-45.png)
 
 ## OSPF - Areas
 
@@ -285,7 +285,7 @@ defines that there is no next router for this path. The tree is then R1 â†’ R2 â
 
 # Transport Layer
 
-![alt text](image-46.png)
+![alt text](./img/image-46.png)
 
 - The network layer is reponsible for communication at the computer level (host-to-host communication)
   - can devlier the message only to the destination computer
@@ -306,7 +306,7 @@ defines that there is no next router for this path. The tree is then R1 â†’ R2 â
 
 - **Process**: an application-layer entity (_running program_) that uses the services of the transprotation layer
 - **Client/server paradigm**: one way to achive process-to-process communication - process-to-process communication between two application layers - local host (client) - remote host(server)
-  ![alt text](image-47.png)
+  ![alt text](./img/image-47.png)
 
 ### Addressing: Port Numbers
 
@@ -318,14 +318,14 @@ defines that there is no next router for this path. The tree is then R1 â†’ R2 â
   - **local host**, **remote host**: defined using IP address
   - **local process**, **remote process**: defined using port numbers
 - A Daytime server: responds to requests from a Daytime client with the current date and time.
-  ![alt text](image-48.png)
+  ![alt text](./img/image-48.png)
 
 ### IP Address vs Port Numbers
 
 - The destination IP address: defines the host among the different hosts in the world
 - The port number: defines one of the processes on this particular host
 
-![alt text](image-49.png)
+![alt text](./img/image-49.png)
 
 #### Socket Address
 
@@ -342,11 +342,11 @@ defines that there is no next router for this path. The tree is then R1 â†’ R2 â
 - Flow control can be implemented by using two buffers
   - one at the sending transport layer
   - the other one at the reeceiving transport layer
-    ![alt text](image-50.png)
+    ![alt text](./img/image-50.png)
 
 ### Error Control
 
-![alt text](image-51.png)
+![alt text](./img/image-51.png)
 
 - The underlying network layer (IP) is unreliable
   - need to make the transport layer reliable if the application requires reliability
@@ -383,7 +383,7 @@ defines that there is no next router for this path. The tree is then R1 â†’ R2 â
 
 - Flow conrol and error control can be combined if we use two numbered buffers
   - one at the sender, the other one at the receiver
-    ![alt text](image-52.png)
+    ![alt text](./img/image-52.png)
 
 ### Congestion Control
 
@@ -405,11 +405,11 @@ defines that there is no next router for this path. The tree is then R1 â†’ R2 â
 
 ### Connectionless Service
 
-![alt text](image-53.png)
+![alt text](./img/image-53.png)
 
 ### Connection-Oriented Service
 
-![alt text](image-54.png)
+![alt text](./img/image-54.png)
 
 - We can implement flow control, error control, congestion control in a connection-oriented protocol
 
@@ -430,7 +430,7 @@ defines that there is no next router for this path. The tree is then R1 â†’ R2 â
 
 ## UDP - Format of a User Datagram
 
-![alt text](image-55.png)
+![alt text](./img/image-55.png)
 
 ## UDP - A Connectionless Transport-Layer Protocol
 
