@@ -71,3 +71,114 @@ let rec unfold f x =
   Cons(x, lazy( unfold f t))
 
 (* More questinos *)
+
+
+(* 1. What is a lazy stream in OCaml? How does it differ from a regular list?
+
+A lazy stream in OCaml is a potentially infinite sequence of elements where the computation of each element is deferred until it is explicitly required. Unlike a regular list, which is eagerly evaluated and finite, a lazy stream calculates its elements lazily, allowing it to represent infinite sequences.
+
+
+2. Write the type definition for a lazy stream.
+type 'a lazystream = Cons of 'a * (unit -> 'a lazystream)
+type 'a lazystream = Cons of 'a * 'a lazystream Lazy.t
+
+3. Explain the purpose of the `Lazy.force` function when working with lazy streams.
+The Lazy.force function evaluates a lazy value of type Lazy.t. When working with lazy streams, Lazy.force is used to compute the tail of the stream (or any deferred computation) on-demand, making the next portion of the stream available. *)
+
+
+
+
+(* 1. **Defining Lazy Streams**  
+  Write a function `from` that generates an infinite lazy stream of integers 
+  starting from a given number.  
+*)
+
+type 'a lazystream = Cons of 'a * 'a lazystream Lazy.t
+let rec from n = Cons(n, lazy( from (n+1)) )
+
+
+
+(* 2. **Take Function**  
+   Implement a function `take` that retrieves the first `n` elements 
+   from a lazy stream as a list.  
+
+   let rec take (n : int) (s : 'a stream) : 'a list = ...
+*)
+let rec take n (Cons (h, t)) = 
+  if n <= 0 then [] else h :: take (n-1) (Lazy.force t)
+
+(* 3. **Map Function**  
+   Implement a function `map` that applies a function 
+   to every element of a lazy stream.  
+
+   let rec map (f : 'a -> 'b) (s : 'a stream) : 'b stream = ...
+*)
+let rec map f (Cons (h,t)) = Cons(f h, lazy( map f (Lazy.force t)))
+
+
+(* 1. **Fibonacci Sequence**  
+   Use lazy streams to generate an infinite stream of Fibonacci numbers. 
+   Write the code for the Fibonacci stream and 
+   demonstrate retrieving the first 10 Fibonacci numbers. *)
+type 'a lazystream = Cons of 'a * 'a lazystream Lazy.t
+(* let rec from n = Cons(n, lazy(from ( n + 1 )) ) *)
+let hd (Cons (h, _)) = h
+let tl (Cons (_, t)) = Lazy.force t
+
+let rec map2 f (Cons(h1, t1)) (Cons(h2, t2)) = 
+  Cons((f h1 h2), lazy(map2 f (Lazy.force t1) (Lazy.force t2)))
+
+let sum = map2 (+)
+
+let rec fibs = 
+  Cons(0, lazy(Cons(1, lazy(sum fibs (tl fibs)))))
+let rec result n (Cons(h,t)) = if n > 1 then result (n-1) (Lazy.force t) else h
+
+
+(* 2. **Filtering Streams**  
+   Write a function `filter` that takes a predicate and a stream, 
+   and returns a new stream containing only the elements that satisfy the predicate. 
+   Demonstrate this by filtering out all even numbers 
+   from an infinite stream of integers starting at 1. *)
+let rec filter f (Cons(h,t)) = 
+  if f h then (Cons(h, lazy(filter f (Lazy.force t))))
+  else filter f (Lazy.force t)
+
+(* 3. **Prime Numbers**  
+   Implement the Sieve of Eratosthenes using lazy streams 
+   to generate an infinite stream of prime numbers. *)
+type 'a lazystream = Cons of 'a * 'a lazystream Lazy.t
+
+let rec nats n = Cons(n, lazy( nats(n+1) ))
+
+let rec filter f (Cons(h,t)) = 
+  if f h then (Cons(h, lazy(filter f (Lazy.force t))))
+  else filter f (Lazy.force t)
+
+let rec soe (Cons(h,t)) = Cons(h, lazy(filter (fun x -> x mod h <> 0) (Lazy.force t)))
+let soe_answer = soe (nats 2)
+
+
+
+
+
+(* 1. Discuss the advantages and disadvantages of using lazy streams over other data structures in OCaml for processing large datasets or infinite sequences. *)
+(* 2. Explain how OCaml's garbage collector interacts with lazy streams. What happens to unused elements of a lazy stream? *)
+(* 3. Modify the `from` function (from Section B) so that it generates a stream where each value is computed lazily. *)
+
+(* 1. The following implementation of a stream has a memory leak. Identify and fix the issue:  
+   ```ocaml
+   type 'a stream = Cons of 'a * (unit -> 'a stream)
+
+   let rec from n = Cons (n, fun () -> from (n + 1))
+
+   let take n s =
+     let rec aux acc n s =
+       if n = 0 then List.rev acc
+       else match s with Cons (x, xs) -> aux (x :: acc) (n - 1) (Lazy.force xs)
+     in
+     aux [] n s
+   ``` *)
+
+(* 2. Rewrite the `map` function to use tail recursion (if possible). Discuss why tail recursion might or might not be necessary in this case. *)
+
