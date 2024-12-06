@@ -6,7 +6,7 @@
 
 - Interactinos between objects as a sequnece of messages between objects from a structure perspective
 - Shows how objects interact in a particular use case or subset of a use case
-  ![alt text](image-16.png)
+  ![alt text](./img/image-16.png)
 - obejct
 - actor
 - links : connects objects and actors
@@ -17,11 +17,11 @@
 - Presents interactions between objects as a sequnce of messages between objects
 - Time-based perspective
 - Lifetime of the interactions between communicating objects
-  ![alt text](image-17.png)
-  ![alt text](image-18.png)
-  ![alt text](image-19.png)
-  ![alt text](image-20.png)
-  ![alt text](image-21.png)
+  ![alt text](./img/image-17.png)
+  ![alt text](./img/image-18.png)
+  ![alt text](./img/image-19.png)
+  ![alt text](./img/image-20.png)
+  ![alt text](./img/image-21.png)
 
 # Dependencies
 
@@ -33,9 +33,9 @@
 
 - **Coupling** is a form of a strong dependency
   - avoid it as much as possbile
-    ![alt text](image-22.png)
+    ![alt text](./img/image-22.png)
   - **interitance** and **interfaces** to decouple code
-    ![alt text](image-23.png)
+    ![alt text](./img/image-23.png)
 
 # SOLID Design Principles
 

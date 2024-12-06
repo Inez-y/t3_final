@@ -126,7 +126,7 @@ def __init__(self, team_number, team_name = “”, member_list = None):
 
 ### Python is Interpreted
 
-![alt text](image-24.png)
+![alt text](./img/image-24.png)
 
 ## Named Arguments
 
@@ -175,7 +175,7 @@ my_print(*my_list) #unpack list
 
 ## Mutable Parameters
 
-![alt text](image-26.png)
+![alt text](./img/image-26.png)
 
 - Can make functions appear to be pass by reference
 - Can change the internal attributes
@@ -185,7 +185,7 @@ my_print(*my_list) #unpack list
 
 ## Immutable Parameters
 
-![alt text](image-25.png)
+![alt text](./img/image-25.png)
 
 - Can make functions appear to be pass by value
 - Can NOT change the internal attributes.
@@ -212,7 +212,7 @@ my_print(*my_list) #unpack list
 - Provide local precedence ordering
 
 - Example
-  ![alt text](image-27.png)
+  ![alt text](./img/image-27.png)
 
 ```python
 class F:
@@ -226,7 +226,7 @@ class G(E, F):
 `Linearization(G) = [G, E, F, object]`
 
 - Example 2
-  ![alt text](image-28.png)
+  ![alt text](./img/image-28.png)
 
 ```
 L(O) = [O]
@@ -246,16 +246,16 @@ L(Z) = [Z] + merge(L(K1), L(K2), L(K3), [K1, K2, K3])
 L[Z] = [Z] + merge([K1, A, B, C, O], [K2, D, B, E, O], [K3, D, A, O], [K1, K2, K3])
 ```
 
-![alt text](image-29.png)
-![alt text](image-30.png)
-![alt text](image-31.png)
-![alt text](image-32.png)
-![alt text](image-33.png)
-![alt text](image-34.png)
-![alt text](image-35.png)
-![alt text](image-36.png)
-![alt text](image-37.png)
-![alt text](image-38.png)
+![alt text](./img/image-29.png)
+![alt text](./img/image-30.png)
+![alt text](./img/image-31.png)
+![alt text](./img/image-32.png)
+![alt text](./img/image-33.png)
+![alt text](./img/image-34.png)
+![alt text](./img/image-35.png)
+![alt text](./img/image-36.png)
+![alt text](./img/image-37.png)
+![alt text](./img/image-38.png)
 
 ## Mixins
 

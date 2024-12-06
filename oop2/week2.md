@@ -503,43 +503,43 @@ isinstance(p, Bird)
 ## Class Diagram
 
 - name of class / attributes and types / methods
-  ![alt text](image-5.png)
+  ![alt text](./img/image-5.png)
 
 ### Dependency
 
 - A contains methods that use parameter B
-  ![alt text](image-6.png)
+  ![alt text](./img/image-6.png)
 
 ### Association
 
 - A contains data attributes B
-  ![alt text](image-7.png)
+  ![alt text](./img/image-7.png)
 
 ### Aggregation
 
 - A is aggregated with B
 - If A destroyed B still exists
-  ![alt text](image-8.png)
+  ![alt text](./img/image-8.png)
 
 ### Composition
 
 - A is composed of B
 - If A destroyed B also destroyed
-  ![alt text](image-9.png)
+  ![alt text](./img/image-9.png)
 
 ### Inheritance
 
 - A is a subclass of B
-  ![alt text](image-10.png)
+  ![alt text](./img/image-10.png)
 
 ### Realization/Implementation
 
 - A is implementing interface B
-  ![alt text](image-11.png)
+  ![alt text](./img/image-11.png)
 
 #### Example
 
-![alt text](image-12.png)
-![alt text](image-13.png)
-![alt text](image-14.png)
-![alt text](image-15.png)
+![alt text](./img/image-12.png)
+![alt text](./img/image-13.png)
+![alt text](./img/image-14.png)
+![alt text](./img/image-15.png)

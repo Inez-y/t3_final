@@ -36,8 +36,8 @@ Goal of OOP2
 - `__name__` is set to the name of the current value
 - But as soon as code begins running from a file, the` __name__` of that file evaluates to`__main__`
   That file’s name remains `__main__` for the duration of the program
-  ![alt text](image-1.png)
-  ![alt text](image-2.png)
+  ![alt text](./img/image-1.png)
+  ![alt text](./img/image-2.png)
 - If we're running code starting from this script, call a main functino
 
 - **Indent** matters
@@ -93,7 +93,7 @@ num2 = 10
   - `ord('A')` returns 65
   - `chr(65)` returns 'A'
 - Escape characters
-  ![alt text](image.png)
+  ![alt text](./img/image.png)
 - Raw Strings with `r` or `R`
 
   - use instead of escape characters
@@ -274,9 +274,9 @@ ValueError: not enough arguments for format string
 - Sequence is the generic term for an ordered set
   - str, list, range, tuple, bytes
 - Common sequence operators
-  ![alt text](image-3.png)
+  ![alt text](./img/image-3.png)
 - Mutable sequence operators
-  ![alt text](image-4.png)
+  ![alt text](./img/image-4.png)
 
 ### List
 

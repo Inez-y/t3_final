@@ -67,7 +67,7 @@ finally:
 ## Exception Inheritance Hierachy
 
 - Most exceptions we handle inherit from `Exception`
-  ![alt text](image-39.png)
+  ![alt text](./img/image-39.png)
 - NEVER have an empty except
   - it will catch all the exceptions
 - put smaller exceptions first, and go larger
@@ -135,7 +135,7 @@ except MyException as e:
 - Assertions must test individual functions of your code
 - The unit test functions go inside the test class
 - The functions must all begin with **`test`**
-  ![alt text](image-40.png)
+  ![alt text](./img/image-40.png)
 
 ```python
 class Test(TestCase):
@@ -161,7 +161,7 @@ data = my_text_file.read() print(f"File Data:\n{data}")
 my_text_file.close()
 ```
 
-![alt text](image-41.png)
+![alt text](./img/image-41.png)
 
 ## `With` Keyword
 
@@ -258,6 +258,233 @@ for day in Days:
 
 # Iterators
 
+- An `Iterator` is responsible for traversing an `Iterable`
+  - An iterators primary responsibility is to iterate over the elements of an iterable.
+  - An Iterable is something that you can loop over.
+  - Iterator
+    ◦ Implements `__next__(self)`
+    ◦ Implements `__iter__(self)`
+  - Iterable
+    ◦ Implements `__iter__(self)`
+- We would need to implement an iterable class and an iterator class
+
+```python
+# List iterator
+my_list = [1, 2, 3]
+list_iterator = iter(my_list)
+
+print(next(list_iterator))  # Output: 1
+print(next(list_iterator))  # Output: 2
+print(next(list_iterator))  # Output: 3
+# next(list_iterator) would raise StopIteration
+```
+
+```python
+class MyIterator:
+    def __init__(self, limit):
+        self.limit = limit
+        self.counter = 0
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.counter < self.limit:
+            self.counter += 1
+            return self.counter
+        else:
+            raise StopIteration
+
+
+# Using the custom iterator
+my_iter = MyIterator(5)
+for num in my_iter:
+    print(num)  # Output: 1, 2, 3, 4, 5
+```
+
+```python
+def my_generator(limit):
+    counter = 0
+    while counter < limit:
+        counter += 1
+        yield counter
+
+
+# Using the generator
+for value in my_generator(3):
+    print(value)  # Output: 1, 2, 3
+```
+
 # Comprehensions
 
+- Comprehensions allow us to transform/filter an iterable object into another iterable
+  - create one iterable from another iterable (sequence/container) by following some special rules/filters.
+- Simple, readable syntax
+
+```
+[item for item in grogeries if condition else]
+```
+
+- Dictionary Comprehension
+
+  - with key-value pair
+
+  ```
+  { f(key): g(value) for key,value in some_iterable if conditional}
+
+  {chr(i+65) : i+65 for i inrange(0,26) if i mod 2 == 0 return True}
+  ```
+
+- Why we use comprehensions
+  - Comprehensions hide the working of iterators
+  - Comprehensions leverage the power of iterators to do complex operations.
+  - Comprehensions are faster
+  - Comprehensions are readable
+  - Comprehensions are maintainable
+
 # Function Object and Observers
+
+- Functions are objects
+
+```python
+>>> def some_function():
+...     print(“Something”)
+>>> function_obj = some_function
+>>> print(function_obj) #<function some_function at 0x007B67C0> >>> print(function_obj.__name__) #some_function
+>>> print(function_obj.__class__) #<class 'function'>
+>>> print(type(function_obj)) #<class 'function'>
+>>> function_obj() #Something
+```
+
+- Event Driven Programming
+
+1. We can store functions as objects
+2. Pass them around via arguments
+3. Call them later in the future when some condition has been met.
+
+- `Callbacks`: functions that are passed to be called back later
+- `Event Handlers`: functions that are meant to handle an event such as a mouse or button click
+  - event handler is another type of callback
+
+# Observer Design Pattern
+
+![alt text](./img/image-42.png)
+
+- `Core`: observers (ex. timer, button, inventory system...)
+- When someothing changes, or significant state has been reached,
+  - Core notifies its observers by calling all the callbacks
+- for de-coupling code in GUI’s
+
+- Requirements
+
+1. All the callback functions accept the **same parameters**.
+
+- all the observers implement either the same interface, or a similar method (informal interface)
+
+2. The core doesn’t care who’s observing it or what they do when a change occurs.
+3. Core only cares about
+
+- it has to run a set number of callbacks
+- call bakcs have the same interface to notify some observers that do something
+
+## Callable Objects
+
+- `__call__(self)`
+
+```python
+class CallableObject:
+    def __call__(self, x, y):
+        return x + y
+
+
+# Creating an instance
+add = CallableObject()
+
+# Using it like a function
+print(add(2, 3))  # Output: 5
+
+```
+
+Generators with `__call__`
+
+```python
+
+class Counter:
+    def __init__(self):
+        self.count = 0
+
+    def __call__(self):
+        self.count += 1
+        return self.count
+
+
+counter = Counter()
+print(counter())  # Output: 1
+print(counter())  # Output: 2
+```
+
+Callable from `collections.abc.Callable`
+
+```python
+from collections.abc import Callable
+
+def my_function():
+    pass
+
+print(isinstance(my_function, Callable))  # Output: True
+
+class NonCallable:
+    pass
+
+print(isinstance(NonCallable(), Callable))  # Output: False
+
+```
+
+Functions are the most common callable objects
+
+```python
+# User-defined function
+def my_function():
+    return "I'm callable!"
+
+print(my_function())  # Output: "I'm callable!"
+
+# Built-in function
+print(len("Hello"))  # Output: 5
+
+```
+
+Instance Methods and class methods
+
+```python
+class MyClass:
+    def instance_method(self):
+        return "Instance method called!"
+
+    @classmethod
+    def class_method(cls):
+        return "Class method called!"
+
+
+obj = MyClass()
+print(obj.instance_method())  # Output: "Instance method called!"
+print(MyClass.class_method())  # Output: "Class method called!"
+
+```
+
+classes
+
+```python
+class MyClass:
+    def __init__(self, name):
+        self.name = name
+
+    def greet(self):
+        return f"Hello, {self.name}!"
+
+
+# Calling the class
+obj = MyClass("Alice")
+print(obj.greet())  # Output: "Hello, Alice!"
+
+```
