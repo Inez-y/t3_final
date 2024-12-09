@@ -152,25 +152,11 @@ two sorted infinite streams into a single sorted infinite stream.
 *)
 type 'a infstream = Cons of int * (unit -> 'a infstream)
 
-let rec sort_stream (Cons(h, t)) = 
-  (* stream of what? *)
-  if h >= t then (Cons(t, fun() -> sort_stream (Cons(h, t))))
-  else (Cons(h, fun () -> sort_stream (Cons(h, t))))
-  
-
-let rec merge_two (Cons(h1, t1)) (Cons(h2, t2)) = 
-  let sort_1 = sort_stream (Cons(h1, t1)) in
-  let sort_2 = sort_stream (Cons(h2, t2)) in
-  let head (Cons(h,t)) = h in 
-  let tail (Cons(h,t)) = t in
-  (* compare two *)
-  if head sort_1 >= head sort_2 
-    then Cons( head sort_2, 
-    fun() -> merge_two (sort_1) (tail sort_2()) ) 
-  else Cons( head sort_1, 
-  fun() -> merge_two (sort_2) (tail sort_1()))
-    
-
+let rec merge_sorted (Cons (h1, t1)) (Cons (h2, t2)) =
+  if h1 <= h2 then
+    Cons (h1, fun () -> merge_sorted (t1 ()) (Cons (h2, t2)))
+  else
+    Cons (h2, fun () -> merge_sorted (Cons (h1, t1)) (t2 ()))
 
 (* 
 Lazy Evaluation Debugging:

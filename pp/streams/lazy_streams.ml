@@ -59,6 +59,7 @@ let sum = map2 (+)
 
 (** [fibs] is an infinite lazy stream of Fibonacci numbers.
     The sequence starts with [0, 1] and each subsequent element is the sum of the previous two. *)
+let tl (Cons(_, t)) = Lazy.force t
 let rec fibs =
   Cons (0, lazy (Cons (1, lazy (sum fibs (tl fibs)))))
 
